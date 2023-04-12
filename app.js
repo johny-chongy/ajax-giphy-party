@@ -2,7 +2,7 @@
 
 const API_KEY = "MhAodEJIJxQMxW9XqxKjyXfNYdLoOIym";
 const BASE_URL = "http://api.giphy.com/v1/gifs";
-
+const removeButton = $("#removeButt");
 let inputForm = $("#form");
 
 /** handles what happens when submitting Giphy key */
@@ -28,8 +28,9 @@ async function addGiphy(searchTerm) {
       }
     }
   );
-  console.log(giphy.data.data['0']);
+  // console.log(giphy.data.data['0']);
   let giphyLink = giphy.data.data['0'].images.original.url;
+
   newGif.attr("src", giphyLink);
   newDiv.append(newGif);
   $("#gifs").append(newDiv);
@@ -40,9 +41,7 @@ function removeAllGifs(){
   $("#gifs").empty();
 }
 
-const removeButton = $("#removeButt");
 removeButton.on("click", removeAllGifs);
-
 inputForm.on("submit", handleSubmit)
 
 
